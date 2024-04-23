@@ -1,24 +1,18 @@
-# README
+#App setup
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Purpose: As a developer, i have commisioned to create an application that allows users to create events and share these events with other users. a user can also create an account and store information about the user along with a profile photo. if i am logged in as a user i have the abilty to update create and edit events and also update my profile.
 
-Things you may want to cover:
+rails new apartment-app-backend --api -d postgresql -T
+run the app with rails s
+User Auth
 
-* Ruby version
+Devise
+--JWT
+--Dependencies
 
-* System dependencies
+CORS
+--JWT
+--RSpec
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Active Storage- for storing profile photos
+rails active_storage: install

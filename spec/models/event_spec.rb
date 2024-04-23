@@ -20,13 +20,13 @@ RSpec.describe Event, type: :model do
 
 it "is valid with valid attributes" do
   event = user.events.create(
-    title: "test title",
-    body: "test body",
-    eventphoto: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuVuAJ861-8mfwqjppG2J9J5-NHVycCcUzShI_VUehWw&s",
+    title: 'test title',
+    body: 'test body',
+    eventphoto: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuVuAJ861-8mfwqjppG2J9J5-NHVycCcUzShI_VUehWw&s',
     eventamount: 200.50,
     grouptotal: 400.50,
     creator: 1,
-    location: "test location"
+    location: 'test location'
   )
 end
 

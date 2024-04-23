@@ -1,6 +1,6 @@
 class Event < ApplicationRecord
-  belongs_to :user
   has_many :event_participants
+  has_many :users, through: :event_participants
 
   validates :title, :body, :eventphoto, :eventamount, :grouptotal, :creator, :location, presence: true
 end

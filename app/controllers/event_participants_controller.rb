@@ -26,9 +26,9 @@ end
 def destroy
   event_participant = EventParticipant.find(params[:id])
   if event_participant.destroy
-    render json: {}, status: 204
+    render json: {message: 'Event participant deleted successfully'}, status: 204
   else
-    render json: {}, status: 422
+    render json: {error: 'Failed to delete event participant'}, status: 422
     end
   end
 end

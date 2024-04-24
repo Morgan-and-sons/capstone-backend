@@ -73,7 +73,7 @@ end
       }
 
       event_participant = EventParticipant.where(user_id: user.id).first
-      patch event_participants_path(event_participant), params: {
+      patch event_participant_path(event_participant), params: {
         event_participant: {
           user_id: user.id,
           event_id: event.id,
@@ -84,7 +84,7 @@ end
       event_participant = EventParticipant.where(user_id: user.id).first
       expect(event_participant.user_id).to eq(user.id)
       expect(event_participant.event_id).to eq(event.id)
-      expect(event_participant.individual_contributions).to eq(individual_contributions)
+      expect(event_participant.individual_contributions).to eq(200)
       expect(response).to have_http_status(200)
     end
 
@@ -99,7 +99,7 @@ end
       event_participant = EventParticipant.where(user_id: user.id).first
       expect(event_participant).not_to be_nil
 
-      patch event_participant_path(event_participant_id), params: {
+      patch event_participant_path(event_participant), params: {
         event_participant: {
           user_id: nil,
           event_id: nil,
@@ -119,7 +119,7 @@ end
       individual_contributions: 200,
     )
     delete event_participant_path(event_participant)
-    event_participant = EventParticipant.where(user_id: user.id).first
+    event_participant = EventParticipant.where(individual_contributions: 200).first
     expect(event_participant).to eq(nil)
   end
 end

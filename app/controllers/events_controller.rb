@@ -26,9 +26,9 @@ class EventsController < ApplicationController
   def destroy
     event = Event.find(params[:id])
     if event.destroy
-      render json: {}, status: 204
+      render json: {message: 'Event deleted successfully'}, status: 204
     else
-      render json: {}, status: 422
+      render json: {error: 'Failed to delete event'}, status: 422
     end
   end
 end

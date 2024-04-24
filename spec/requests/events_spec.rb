@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Events', type: :request do
-  let(:user) { User.create(
+    let(:user) { User.create(
     username: 'testusername',
     firstname: 'testfirstname',
     lastname: 'testlastname',
@@ -20,7 +20,7 @@ RSpec.describe 'Events', type: :request do
         eventphoto: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuVuAJ861-8mfwqjppG2J9J5-NHVycCcUzShI_VUehWw&s',
         eventamount: 200.50,
         grouptotal: 400.50,
-        creator: 1,
+        creator: user.id,
         location: 'test location'
   )
   get events_path 
@@ -38,7 +38,7 @@ RSpec.describe 'Events', type: :request do
         eventphoto: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuVuAJ861-8mfwqjppG2J9J5-NHVycCcUzShI_VUehWw&s',
         eventamount: 200.50,
         grouptotal: 400.50,
-        creator: 1,
+        creator: user.id,
         location: 'test location'
       }
     }
@@ -73,7 +73,7 @@ end
         eventphoto: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuVuAJ861-8mfwqjppG2J9J5-NHVycCcUzShI_VUehWw&s',
         eventamount: 200.51,
         grouptotal: 400.51,
-        creator: 1,
+        creator: user.id,
         location: 'test location1'
       }
     }
@@ -86,7 +86,7 @@ end
         eventphoto: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuVuAJ861-8mfwqjppG2J9J5-NHVycCcUzShI_VUehWw&s',
         eventamount: 300.51,
         grouptotal: 400.51,
-        creator: 1,
+        creator: user.id,
         location: 'test location for patch'
       }
     }
@@ -97,7 +97,7 @@ end
     expect(event.eventphoto).to eq('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuVuAJ861-8mfwqjppG2J9J5-NHVycCcUzShI_VUehWw&s')
     expect(event.eventamount).to eq(300.51)
     expect(event.grouptotal).to eq(400.51)
-    expect(event.creator).to eq(1)
+    expect(event.creator).to eq(user.id)
     expect(event.location).to eq('test location for patch')
     expect(response).to have_http_status(200)
   end
@@ -110,7 +110,7 @@ it 'returns an http status error for an invalid update' do
         eventphoto: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuVuAJ861-8mfwqjppG2J9J5-NHVycCcUzShI_VUehWw&s',
         eventamount: 300.51,
         grouptotal: 400.51,
-        creator: 1,
+        creator: user.id,
         location: 'test location for patch'
     }
   }
@@ -141,7 +141,7 @@ it 'returns an http status error for an invalid update' do
         eventphoto: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuVuAJ861-8mfwqjppG2J9J5-NHVycCcUzShI_VUehWw&s',
         eventamount: 300.51,
         grouptotal: 400.51,
-        creator: 1,
+        creator: user.id,
         location: 'test location for delete'
     )
     delete event_path(event)

@@ -4,6 +4,15 @@ def index
   render json: event_participant
 end
 
+def show 
+  event_participants = EventParticipant.where(user_id: params[:id])
+  if event_participants.present?
+    render json: event_participants.pluck(:event_id)
+  else
+    render json: { error: "Event participants not found for the user" }, status: :not_found
+  end
+end
+
 def create
   event_participant = EventParticipant.create(event_participant_params)
   if event_participant.valid?

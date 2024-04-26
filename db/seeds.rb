@@ -92,12 +92,6 @@ events_three_participant2 = EventParticipant.create(
 
 events_four_participant1 = EventParticipant.create(
   user_id: user1.id,
-  event_id: event_three_record.id,
-  individual_contributions: 1
-)
-
-events_four_participant2 = EventParticipant.create(
-  user_id: user2.id,
-  event_id: event_three_record.id,
+  event_id: event_four_record.id,
   individual_contributions: 1
 )

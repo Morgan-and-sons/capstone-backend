@@ -34,6 +34,19 @@ RSpec.describe "EventParticipants", type: :request do
     end
   end
 
+  describe 'GET #show' do
+  it 'returns a valid event_participant and http success' do
+    event_participant = EventParticipant.create(
+      user_id: user.id,
+      event_id: event.id,
+      individual_contributions: 100,
+    )
+    get event_participant_path(user)
+    expect(response).to have_http_status(200)
+    expect(event_participant).to be_valid
+  end
+end
+
   describe 'POST #create' do
     it 'creates a valid event_participant with a http success' do
       post event_participants_path, params: {

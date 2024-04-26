@@ -7,9 +7,9 @@ end
 def show 
   event_participants = EventParticipant.where(user_id: params[:id])
   if event_participants.present?
-    render json: event_participants.pluck(:event_id)
+    render json: event_participants.pluck(:event_id), status: 200
   else
-    render json: { error: "Event participants not found for the user" }, status: :not_found
+    render json: { error: 'Event Participant not found' }, status: 404
   end
 end
 

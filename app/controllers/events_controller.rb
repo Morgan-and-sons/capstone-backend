@@ -7,6 +7,7 @@ class EventsController < ApplicationController
   def create
     event = Event.create(event_params)
     if event.valid?
+      create_event_participant = EventParticipant.create(user_id: event.creator, event_id: event.id, individual_contributions: 0)
       render json: event
     else
       render json: event.errors, status: 422

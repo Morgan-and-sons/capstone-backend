@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_23_200352) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_01_182719) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -78,13 +78,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_23_200352) do
     t.string "username"
     t.string "firstname"
     t.string "lastname"
-    t.bigint "profile_photo_id"
+    t.string "profile_photo_url"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["profile_photo_id"], name: "index_users_on_profile_photo_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "users", "active_storage_attachments", column: "profile_photo_id"
 end

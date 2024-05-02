@@ -8,7 +8,7 @@ def show
   event_participants = EventParticipant.where(user_id: params[:id])
   event_ids = event_participants.pluck(:event_id)
   current_user_events = event_ids.map { |e_id| Event.where(id: e_id) }.flatten
-  if event_participants.present?
+  if event_participants.present? || current_user_events.length == 0
     render json: current_user_events, status: 200
   else
     render json: { error: 'Event Participant not found' }, status: 404
@@ -16,6 +16,9 @@ def show
 end
 
 def create
+  user_banana = User.where(email: params["user_id"]).first.id
+  params[:user_id] = user_banana
+  params[:event_participant][:user_id] = user_banana
   event_participant = EventParticipant.create(event_participant_params)
   if event_participant.valid?
     render json: event_participant

@@ -16,6 +16,10 @@ def show
 end
 
 def create
+  user_banana = User.where(email: params["user_id"]).first.id
+  params[:user_id] = user_banana
+  params[:event_participant][:user_id] = user_banana
+  p params
   event_participant = EventParticipant.create(event_participant_params)
   if event_participant.valid?
     render json: event_participant

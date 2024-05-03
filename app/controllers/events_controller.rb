@@ -37,5 +37,5 @@ end
 
 private
 def event_params
-  params.require(:event).permit(:title, :body, :eventphoto, :eventamount, :grouptotal, :creator, :location)
+  params.require(:event).permit(:title, :body, :eventphoto, :eventamount, :grouptotal, :creator, :location, event_participants_attributes: [:user_id, :event_id, :individual_contributions, :id, :created_at, :updated_at])
 end
